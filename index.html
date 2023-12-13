@@ -4,30 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Generador QR</title>
+	<link rel="stylesheet" href="style.css">
 
 </head>
 <body>
   <div class="a"><h1>Generador de QR</h1>
-  </div>
+  
 	<br>
 	Introduce tu texto o url aquí:
 <input id="data" type="text" value=" " style="width:80%" /><br />
-<div id="qrcode" ></div>
-<p>elige el color</p>
+
+<p>Elige el color</p>
 							<input type="radio" name="color" id="azul" value="#0000ff" > 
               <label for="azul">
-								azul
+								<img src="azul.png" alt="qr" width="100">
 							</label>
               <input type="radio" name="color" id="negro" value="#000"> 
               <label for="negro">
-								negro
+								<img src="negro.png" alt="qr" width="100">
 							</label>
               <input type="radio" name="color" id="rojo" value="#ff0000" > 
               <label for="rojo">
-								rojo
+								<img src="rojo.jpg" alt="qr" width="100">
 							</label>
-
+<p>Elige el tamaño</p>
+							<input type="radio" name="tamano" id="pequeno" value="80" > 
+              <label for="pequeno">
+								<img src="qr.png" alt="qr" width="60">
+							</label>
+              <input type="radio" name="tamano" id="mediano" value="150"> 
+              <label for="mediano">
+								<img src="qr.png" alt="qr" width="100">
+							</label>
+              <input type="radio" name="tamano" id="grande" value="250" > 
+              <label for="grande">
+								<img src="qr.png" alt="qr" width="120">
+							</label>
+<br>
 <button id="generarqr">generar qr</button>
+<div id="qrcode" ></div>
+</div>
 
 <script type="text/javascript" src="qrcode.min.js"></script>
 <script type="text/javascript">
@@ -39,6 +55,8 @@
 	let generar=document.getElementById('generarqr');
 	// qrcode es el div con id=qrcode
 	let qrcode=document.getElementById('qrcode');
+	//
+	let tamano=document.getElementsByName('tamano');
 
 	generar.addEventListener('click',function(){
 		let dataqr=data.value
@@ -49,11 +67,17 @@
 			color=radio.value
 		}
 	});
+
+	tamano.forEach(radio => {
+		if(radio.checked){
+			tamano=radio.value
+		}
+	});
     // qrcode.innerHTML=resultado
 		new QRCode(qrcode, {
 			text:dataqr,
-			width : 150,
-			height : 150,
+			width : tamano,
+			height : tamano,
 			colorDark: color
 			
 	});

@@ -1,0 +1,22 @@
+body{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+  background-image: url("create-a-qr-code.png");
+}
+.a{
+  background-color: rgba(255, 228, 196, 0.753);
+  color: black;
+  padding: 1em;
+  margin: 1em;
+}
+h1{
+  text-align: center;
+}
+#qrcode{
+  padding: 1em;
+  margin: 1em;
+}
+button{
+  padding: 1em;
+  margin: 1em;
+}
