@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador QR</title>
+
+</head>
+<body>
+  <div class="a"><h1>Generador de QR</h1>
+  </div>
+	<br>
+	Introduce tu texto o url aquí:
+<input id="data" type="text" value=" " style="width:80%" /><br />
+<div id="qrcode" ></div>
+<p>elige el color</p>
+							<input type="radio" name="color" id="azul" value="#0000ff" > 
+              <label for="azul">
+								azul
+							</label>
+              <input type="radio" name="color" id="negro" value="#000"> 
+              <label for="negro">
+								negro
+							</label>
+              <input type="radio" name="color" id="rojo" value="#ff0000" > 
+              <label for="rojo">
+								rojo
+							</label>
+
+<button id="generarqr">generar qr</button>
+
+<script type="text/javascript" src="qrcode.min.js"></script>
+<script type="text/javascript">
+	//data es el id del input
+	let data=document.getElementById('data');
+	// color es input type="radio" name="color"
+	let color=document.getElementsByName('color');
+	// generar es el button id="generarqr"
+	let generar=document.getElementById('generarqr');
+	// qrcode es el div con id=qrcode
+	let qrcode=document.getElementById('qrcode');
+
+	generar.addEventListener('click',function(){
+		let dataqr=data.value
+	console.log(color)
+
+	color.forEach(radio => {
+		if(radio.checked){
+			color=radio.value
+		}
+	});
+    // qrcode.innerHTML=resultado
+		new QRCode(qrcode, {
+			text:dataqr,
+			width : 150,
+			height : 150,
+			colorDark: color
+			
+	});
+
+	
+});
+</script>
+
+</body>
